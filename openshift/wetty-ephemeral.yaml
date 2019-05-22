@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: wetty-ephemeral
+  template: wetty-ephemeral-custom
 metadata:
   annotations:
     description: Web Based Terminal Interface (Ephemeral)
     iconClass: icon-nodejs
     tags: tty,http
   creationTimestamp: null
-  name: wetty-ephemeral
+  name: wetty-ephemeral-custom
 objects:
 - apiVersion: v1
   kind: ImageStream
@@ -101,7 +101,7 @@ objects:
           image: ' '
           ports:
           - containerPort: 3000
-        - name: openssh
+        - name: openssh-custom
           image: ' '
           ports:
           - containerPort: 22
@@ -117,10 +117,10 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - openssh
+        - openssh-custom
         from:
           kind: ImageStreamTag
-          name: openssh:latest
+          name: openssh-custom:latest
           namespace: ${NAMESPACE}
       type: ImageChange
     - type: ConfigChange
