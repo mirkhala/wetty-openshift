@@ -120,7 +120,7 @@ objects:
         - openssh-custom
         from:
           kind: ImageStreamTag
-          name: openssh-custom:latest
+          name: openssh:latest
           namespace: ${NAMESPACE}
       type: ImageChange
     - type: ConfigChange
